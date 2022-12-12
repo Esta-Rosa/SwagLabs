@@ -2,31 +2,34 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 @Test
 public class SwagLabs {
     WebDriver driver;
 
     //set Up
-    @Test(priority = 1)
-    public void setDriver(){
+    @BeforeTest
+    public void setDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 
     //Go To SwagLabs
-    @Test(priority = 2)
+    @Test(priority = 1)
     public void goToBrowser() throws InterruptedException {
-        driver.get("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com");
         Thread.sleep(2000);
     }
 
     //Login with provided credentials
-    @Test(priority = 3)
-    public void login(){
+    @Test(priority = 2)
+    public void login() {
         try {
-
             driver.findElement(By.id("user-name")).sendKeys("standard_user");
             Thread.sleep(3000);
             driver.findElement(By.id("password")).sendKeys("secret_sauce");
@@ -38,9 +41,16 @@ public class SwagLabs {
         }
     }
 
+    //Verify login
+    @Test(priority = 3)
+    public void verifyLogin() {
+        String title = "Swag Labs";
+        assertEquals(title, driver.getTitle());
+    }
+
     //Add item to cart
     @Test(priority = 4)
-    public void addToCart(){
+    public void addToCart() {
         try {
             driver.findElement(By.linkText("Sauce Labs Bike Light")).click();
             Thread.sleep(3000);
@@ -53,7 +63,7 @@ public class SwagLabs {
 
     //Go to cart
     @Test(priority = 5)
-    public void goToCart(){
+    public void goToCart() {
         try {
             driver.findElement(By.id("shopping_cart_container")).click();
             Thread.sleep(2000);
@@ -64,7 +74,7 @@ public class SwagLabs {
 
     //checkout
     @Test(priority = 6)
-    public  void checkOut(){
+    public void checkOut() {
         try {
             driver.findElement(By.id("checkout")).click();
             Thread.sleep(2000);
@@ -75,7 +85,7 @@ public class SwagLabs {
 
     //Enter personal details
     @Test(priority = 7)
-    public void enterCredentials(){
+    public void enterCredentials() {
         try {
             driver.findElement(By.id("first-name")).sendKeys("Esta");
             Thread.sleep(3000);
@@ -92,7 +102,7 @@ public class SwagLabs {
 
     //Finish
     @Test(priority = 8)
-    public  void finish(){
+    public void finish() {
         try {
             driver.findElement(By.id("finish")).click();
             Thread.sleep(2000);
@@ -114,9 +124,8 @@ public class SwagLabs {
     }
 
     //Tear down
-    @Test(priority = 10)
-    public void tearDown(){
-        driver.close();
+    @AfterTest
+    public void tearDown() {
         driver.quit();
     }
 }
