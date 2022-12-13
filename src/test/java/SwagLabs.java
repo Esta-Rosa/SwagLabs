@@ -100,27 +100,25 @@ public class SwagLabs {
         }
     }
 
-    //Finish
+    //Log out
     @Test(priority = 8)
-    public void finish() {
+    public void logOut() {
         try {
             driver.findElement(By.id("finish")).click();
             Thread.sleep(2000);
+
             //go back home page
             driver.findElement(By.id("back-to-products")).click();
+            Thread.sleep(2000);
+
+            //log out
+            driver.findElement(By.id("react-burger-menu-btn")).click();
+            Thread.sleep(2000);
+            driver.findElement(By.id("logout_sidebar_link")).click();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    //log out
-    @Test(priority = 9)
-    public void logOut() throws InterruptedException {
-        driver.findElement(By.id("react-burger-menu-btn")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.id("logout_sidebar_link")).click();
-        Thread.sleep(2000);
     }
 
     //Tear down
