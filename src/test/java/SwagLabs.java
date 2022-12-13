@@ -67,15 +67,8 @@ public class SwagLabs {
         try {
             driver.findElement(By.id("shopping_cart_container")).click();
             Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    //checkout
-    @Test(priority = 6)
-    public void checkOut() {
-        try {
+            //check out
             driver.findElement(By.id("checkout")).click();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -84,7 +77,7 @@ public class SwagLabs {
     }
 
     //Enter personal details
-    @Test(priority = 7)
+    @Test(priority = 6)
     public void enterCredentials() {
         try {
             driver.findElement(By.id("first-name")).sendKeys("Esta");
@@ -101,7 +94,7 @@ public class SwagLabs {
     }
 
     //Log out
-    @Test(priority = 8)
+    @Test(priority = 7)
     public void logOut() {
         try {
             driver.findElement(By.id("finish")).click();
