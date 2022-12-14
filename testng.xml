@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <test name="SwagLabs">
+        <classes>
+            <class name="SetupEnvironment">
+                <methods>
+                    <include name="setDriver"/>
+                    <include name="goToBrowser"/>
+                    <include name="tearDown"/>
+                </methods>
+            </class>
+            <class name="LoginAndLogOut">
+                <methods>
+                    <include name="login"/>
+                    <include name="verifyLogin"/>
+                    <include name="logOut"/>
+                </methods>
+            </class>
+            <class name="AddToCartCheckOut">
+                <methods>
+                    <include name="addToCart"/>
+                    <include name="goToCart"/>
+                    <include name="enterCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
