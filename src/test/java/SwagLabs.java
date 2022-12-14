@@ -20,14 +20,13 @@ public class SwagLabs {
     }
 
     //Go To SwagLabs
-    @Test(priority = 1)
     public void goToBrowser() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         Thread.sleep(2000);
     }
 
     //Login with provided credentials
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "goToBrowser")
     public void login() {
         try {
             driver.findElement(By.id("user-name")).sendKeys("standard_user");
@@ -41,15 +40,14 @@ public class SwagLabs {
         }
     }
 
-    //Verify login
-    @Test(priority = 3)
+    //Verify login    @Test(dependsOnMethods = "login")
     public void verifyLogin() {
         String title = "Swag Labs";
         assertEquals(title, driver.getTitle());
     }
 
     //Add item to cart
-    @Test(priority = 4)
+    @Test(dependsOnMethods = "verifyLogin")
     public void addToCart() {
         try {
             driver.findElement(By.linkText("Sauce Labs Bike Light")).click();
@@ -62,7 +60,7 @@ public class SwagLabs {
     }
 
     //Go to cart
-    @Test(priority = 5)
+    @Test(dependsOnMethods = "addToCart")
     public void goToCart() {
         try {
             driver.findElement(By.id("shopping_cart_container")).click();
@@ -77,7 +75,7 @@ public class SwagLabs {
     }
 
     //Enter personal details
-    @Test(priority = 6)
+    @Test(dependsOnMethods = "goToCart")
     public void enterCredentials() {
         try {
             driver.findElement(By.id("first-name")).sendKeys("Esta");
@@ -94,7 +92,7 @@ public class SwagLabs {
     }
 
     //Log out
-    @Test(priority = 7)
+    @Test(dependsOnMethods = "enterCredentials")
     public void logOut() {
         try {
             driver.findElement(By.id("finish")).click();
