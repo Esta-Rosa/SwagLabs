@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 
 public class AddToCartCheckOut {
     //Add item to cart
-    @Test(dependsOnMethods = "LoginAndLog.verifyLogin")
+    @Test(dependsOnMethods = "LoginAndLogOut.verifyLogin")
     public void addToCart() {
         try {
             SetupEnvironment.driver.findElement(By.linkText("Sauce Labs Bike Light")).click();

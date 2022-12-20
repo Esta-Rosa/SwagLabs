@@ -15,14 +15,12 @@
             <artifactId>testng</artifactId>
             <version>7.6.1</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.6.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -36,7 +34,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>

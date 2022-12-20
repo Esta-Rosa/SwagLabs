@@ -1,11 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-@Test
 public class SetupEnvironment {
     static WebDriver driver;
 
@@ -14,9 +11,11 @@ public class SetupEnvironment {
     public void setDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     //Go To SwagLabs
+    @Test
     public void goToBrowser() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         Thread.sleep(2000);
